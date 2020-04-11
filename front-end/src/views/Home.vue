@@ -1,8 +1,10 @@
 <template>
   <div class="home">
-    <section class="image-gallery">
-      <div class="image" v-for="item in items" :key="item.id">
-        <h2>{{item.title}}</h2>
+    <section class="image-gallery row">
+      <div class="image col-lg" v-for="item in items" :key="item.id">
+        <h4>Name: {{item.title}}</h4>
+        <h5>A/S/L: {{item.asl}}</h5>
+        <h5>Contact: {{item.contact}}</h5>
         <p>{{item.description}}</p>
         <img :src="item.path" />
 
@@ -62,12 +64,24 @@ p {
 
 .image {
   margin: 0 0 1.5em;
-  display: inline-block;
+  /*display: inline-block;*/
   width: 100%;
+  min-width: 350px;
+  border: 1px solid #5BDEFF;
 }
 
 .image img {
+  display: block;
   width: 100%;
+  height: auto;
+}
+
+.image h5 {
+  margin-top: -10px;
+}
+
+.image p {
+  margin-top: -5px;
 }
 
 /* Masonry on large screens */

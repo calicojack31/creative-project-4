@@ -1,31 +1,45 @@
 <template>
 <div class="admin">
-  <h1>The Admin Page!</h1>
+  <h1>Make a Splash!</h1>
+  <h5>As something of a case study in anarchy, you have the option to register and modify
+     the information of not just yourself, but anybody!</h5>
+     <div class="row">
+       <div class="col-lg">
 <div class="heading">
-  <div class="circle">1</div>
-  <h2>Add an Item</h2>
+  <!--<div class="circle">1</div>-->
+  <h2>Sign Someone Up!</h2>
 </div>
 <div class="add">
   <div class="form">
-    <input v-model="title" placeholder="Title">
+    <input v-model="title" placeholder="Name">
     <p></p>
-    <textarea v-model="description" placeholder="Description"/>
+    <input v-model="asl" placeholder="Age / Sex / Location">
+    <p></p>
+    <input v-model="contact" placeholder="How to Contact">
+    <p></p>
+    <textarea v-model="description" placeholder="Tell us about this person!"/>
+    <p></p>
     <input type="file" name="photo" @change="fileChanged">
+    <p></p>
     <button @click="upload">Upload</button>
   </div>
   <div class="upload" v-if="addItem">
     <h2>{{addItem.title}}</h2>
+    <h2>{{addItem.asl}}</h2>
+    <h2>{{addItem.contact}}</h2>
+    <p>{{addItem.description}}</p>
     <img :src="addItem.path" />
-    <h3>{{addItem.description}}</h3>
   </div>
 </div>
+</div>
+<div class="col-lg">
 <div class="heading">
-  <div class="circle">2</div>
-  <h2>Edit/Delete an Item</h2>
+<!--  <div class="circle">2</div>  -->
+  <h2>Edit/Delete Someone!</h2>
 </div>
 <div class="edit">
   <div class="form">
-    <input v-model="findTitle" placeholder="Search">
+    <input v-model="findTitle" placeholder="Search by Name">
     <div class="suggestions" v-if="suggestions.length > 0">
       <div class="suggestion" v-for="s in suggestions" :key="s.id" @click="selectItem(s)">{{s.title}}
       </div>
@@ -33,6 +47,11 @@
   </div>
   <div class="upload" v-if="findItem">
     <input v-model="findItem.title">
+    <p></p>
+    <input v-model="findItem.asl">
+    <p></p>
+    <input v-model="findItem.contact">
+    <p></p>
     <textarea v-model="findItem.description"/>
     <p></p>
     <img :src="findItem.path" />
@@ -43,16 +62,22 @@
   </div>
 </div>
 </div>
+</div>
+<div class="row footer-protector">
+</div>
+</div>
 </template>
 
 
 <script>
 import axios from 'axios';
 export default {
-  name: 'Admin',
+  name: 'PondAdmin',
   data() {
     return {
       title: "",
+      asl: "",
+      contact: "",
       description: "",
       file: null,
       addItem: null,
@@ -81,6 +106,8 @@ export default {
         let r1 = await axios.post('/api/photos', formData);
         let r2 = await axios.post('/api/items', {
           title: this.title,
+          asl: this.asl,
+          contact: this.contact,
           description: this.description,
           path: r1.data.path
         });
@@ -116,6 +143,8 @@ export default {
       try {
         await axios.put("/api/items/" + item._id, {
           title: this.findItem.title,
+          asl: this.findItem.asl,
+          contact: this.findItem.contact,
           description: this.findItem.description,
         });
         this.findItem = null;
@@ -143,7 +172,7 @@ export default {
 
 .heading h2 {
   margin-top: 8px;
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 
 .add,
@@ -168,6 +197,7 @@ select,
 button {
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
+  width: 100%;
 }
 
 .form {
@@ -199,5 +229,8 @@ button {
   color: #fff;
 }
 
+.footer-protector {
+  margin-top: 50px;
+}
 
 </style>

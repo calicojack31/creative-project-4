@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Admin from '../views/Admin.vue'
+import PondAdmin from '../views/PondAdmin.vue'
+import Chat from '../views/Chat.vue'
+import ChatAdmin from '../views/ChatAdmin.vue'
 
 Vue.use(VueRouter)
 
@@ -11,9 +13,19 @@ const routes = [{
     component: Home
   },
   {
-    path: '/admin',
-    name: 'admin',
-    component: Admin
+    path: '/pond-admin',
+    name: 'pond-admin',
+    component: PondAdmin
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: Chat,
+  },
+  {
+    path: '/chat-admin',
+    name: 'chat-admin',
+    component: ChatAdmin,
   }
 ]
 
