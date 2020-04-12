@@ -99,43 +99,36 @@ export default {
   },
   methods: {
     async upload() {
-      try {
-      //  const formData = new FormData();
+
         let r1 = await axios.post('api/posts/', {
           subject: this.subject,
           message: this.message,
           poster: this.poster,
         });
         this.addPost = r1.data;
-      } catch (error) {
-        this.sendStatus(500);
-      }
+
     },
     async getPosts() {
-      try {
+
         let response = await axios.get("/api/posts");
         this.posts = response.data;
         return true;
-      } catch (error) {
-        this.sendStatus(500);
-      }
+
     },
     selectPost(post) {
       this.findSubject = "";
       this.findPost = post;
     },
     async deletePost(post) {
-      try {
+
         await axios.delete("/api/posts/" + post._id);
         this.findPost = null;
         this.getPosts();
         return true;
-      } catch (error) {
-        this.sendStatus(500);
-      }
+
     },
     async editPost(post) {
-      try {
+
         await axios.put("/api/posts/" + post._id, {
           subject: this.findPost.subject,
           message: this.findPost.message,
@@ -144,9 +137,7 @@ export default {
         this.findPost = null;
         this.getPosts();
         return true;
-      } catch (error) {
-        this.sendStatus(500);
-      }
+
     },
   }
 }

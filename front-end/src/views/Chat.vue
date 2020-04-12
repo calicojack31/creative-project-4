@@ -25,16 +25,15 @@ export default {
   },
   methods: {
     async getPosts() {
-      try {
+
         let response = await axios.get("/api/posts");
         this.posts = response.data;
         return true;
-      } catch (error) {
-        this.sendStatus(500);
+
       }
     },
-  },
-}
+  };
+
 </script>
 
 <style scoped>
