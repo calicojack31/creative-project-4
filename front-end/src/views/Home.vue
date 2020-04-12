@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <section class="image-gallery row">
-      <div class="image col-lg" v-for="item in items" :key="item.id">
-        <h4>Name: {{item.title}}</h4>
-        <h5>A/S/L: {{item.asl}}</h5>
-        <h5>Contact: {{item.contact}}</h5>
+      <div class="image col-md" v-for="item in items" :key="item.id">
+        <h4>{{item.title}}</h4>
+        <h5>{{item.asl}}</h5>
+        <h5>{{item.contact}}</h5>
         <p>{{item.description}}</p>
         <img :src="item.path" />
 
@@ -34,7 +34,7 @@ export default {
         this.items = response.data;
         return true;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
   },
@@ -66,8 +66,8 @@ p {
   margin: 0 0 1.5em;
   /*display: inline-block;*/
   width: 100%;
-  min-width: 350px;
-  border: 1px solid #5BDEFF;
+  min-width: 275px;
+  /*border: 1px solid #5BDEFF;*/
 }
 
 .image img {

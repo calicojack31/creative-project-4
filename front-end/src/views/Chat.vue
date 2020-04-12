@@ -11,7 +11,6 @@
 </template>
 
 <script>
-//WILL HAVE TO REMOVE CONSOLE LOG
 
 import axios from 'axios';
 export default {
@@ -31,7 +30,7 @@ export default {
         this.posts = response.data;
         return true;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
   },
@@ -45,6 +44,7 @@ export default {
   padding-left: 5px;
   padding-right: 5px;
   border: 1px solid #5BDEFF;
+  border: 1px solid #629e3a;
 }
 
 .post

@@ -50,7 +50,7 @@ app.post('/api/posts', async (req, res) => {
   });
   try {
     await post.save();
-    res.send(item);
+    res.send(post);
   } catch (error) {
     res.sendStatus(500);
   }
@@ -89,13 +89,9 @@ app.put('/api/posts/:id', async (req, res) => {
   }
 });
 
-// Create a model for items in the museum.
 const Item = mongoose.model('Item', itemSchema);
-// Upload a photo. Uses the multer middleware for the upload and then returns
-// the path where the photo is stored in the file system.
 
 app.post('/api/photos', upload.single('photo'), async (req, res) => {
-  // Just a safety check
   if (!req.file) {
     return res.sendStatus(400);
   }
@@ -104,7 +100,6 @@ app.post('/api/photos', upload.single('photo'), async (req, res) => {
   });
 });
 
-// Create a new item in the museum: takes a title and a path to an image.
 app.post('/api/items', async (req, res) => {
   const item = new Item({
     title: req.body.title,
@@ -117,18 +112,15 @@ app.post('/api/items', async (req, res) => {
     await item.save();
     res.send(item);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 });
 
-// Get a list of all of the items in the museum.
 app.get('/api/items', async (req, res) => {
   try {
     let items = await Item.find();
     res.send(items);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 });
@@ -138,10 +130,8 @@ app.delete('/api/items/:id', async (req, res) => {
     await Item.deleteOne({
       _id: req.params.id
     });
-    //req.sendStatus(200);
   } catch (error) {
-    console.log(error);
-    //res.sendStatus(500);
+    res.sendStatus(500);
   }
 });
 
@@ -157,7 +147,7 @@ app.put('/api/items/:id', async (req, res) => {
     item.description = req.body.description;
     item.save();
   } catch (error) {
-    console.log(error);
+    res.sendStatus(500);
   }
 });
 

@@ -126,7 +126,7 @@ export default {
     },
     async deletePost(post) {
       try {
-        await axios.delete("/api/posts/" + post._id_);
+        await axios.delete("/api/posts/" + post._id);
         this.findPost = null;
         this.getPosts();
         return true;

@@ -113,7 +113,7 @@ export default {
         });
         this.addItem = r2.data;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
     async getItems() {
@@ -122,7 +122,7 @@ export default {
         this.items = response.data;
         return true;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
     selectItem(item) {
@@ -136,7 +136,7 @@ export default {
         this.getItems();
         return true;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
     async editItem(item) {
@@ -151,7 +151,7 @@ export default {
         this.getItems();
         return true;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
   }

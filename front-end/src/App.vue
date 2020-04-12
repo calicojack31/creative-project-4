@@ -7,31 +7,20 @@
       </div>
     </router-link>
     <div class="col-lg">
-      <!--Probably add another class after col-lg to make it work better on mobile-->
     <div class="title row">
       <h1>The Catfish Pond</h1>
     </div>
-  <!--  <div class="tagline row">
-      <p>Be yourself. Or don't.</p>
-    </div> -->
   </div>
   </div>
   <div class="content">
     <router-view />
   </div>
 
-<!--
-  <div class="footer">
-    <router-link to="/admin">Admin</router-link>
-  </div>
--->
-
-
 <h1 class="allow-footer"></h1>
   <footer class="footer">
     <div class="container">
       <div class="row">
-          <router-link class="col-sm" to="/home">Go Fishing!</router-link>
+          <router-link class="col-sm" to="/">Go Fishing!</router-link>
           <router-link class="col-sm" to="/pond-admin">Make a Splash!</router-link>
       </div>
       <div class="row">
@@ -39,7 +28,7 @@
             <router-link class="col-sm" to="/chat-admin">Glub it Up!</router-link>
       </div>
       <div class="row">
-          <a class="col-sm" href="https://github.com/calicojack31/creative-project-3.git">UPDATE ME GitHub Repository Here</a>
+          <a class="col-sm" href="https://github.com/calicojack31/creative-project-4.git">GitHub Repository Here</a>
       </div>
 
 
@@ -52,9 +41,6 @@
 </template>
 
 <style>
-
-/*IMPORT A FONT HERE, SEE MY SMASHVUE CODE*/
-/*Things after this taken from that code*/
 
 .allow-footer {
   padding-bottom: 30px;
@@ -72,6 +58,7 @@ footer {
   text-align: center;
   margin-top: 100px;
   background-color: #adefff;
+  background-color: #97d171;
   color: #1C454F;
 }
 
@@ -83,7 +70,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 16px;
   background: #fff;
   padding: 0px;
@@ -95,10 +82,9 @@ body {
   display: flex;
   padding: 10px 100px 0px 100px;
   background-color: #5BDEFF;
-  color: #1C454F;
-  /*align-items: center;
-  text-align: center;
-  justify-content: center;*/
+  background-color: #629e3a;
+  color: black;
+  font-family: 'Girassol', cursive;
 }
 
 .title {
@@ -124,14 +110,6 @@ body {
   min-height: 500px;
 }
 
-/* Footer */
-/*.footer {
-  height: 50px;
-  padding: 20px 100px 0px 100px;
-  background: #e3e3e3;
-  font-size: 12px;
-}*/
-
 .footer a {
   color: #000;
 }
@@ -144,13 +122,12 @@ h2 {
   font-size: 14px;
 }
 
-
 #site-logo {
   height: 90px;
   display: flex;
   padding-right: 20px;
+  margin-top: -5px;
+  padding-bottom: 5px;
 }
-
-
 
 </style>
