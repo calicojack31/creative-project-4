@@ -108,7 +108,7 @@ export default {
         });
         this.addPost = r1.data;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
     async getPosts() {
@@ -117,7 +117,7 @@ export default {
         this.posts = response.data;
         return true;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
     selectPost(post) {
@@ -131,7 +131,7 @@ export default {
         this.getPosts();
         return true;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
     async editPost(post) {
@@ -145,7 +145,7 @@ export default {
         this.getPosts();
         return true;
       } catch (error) {
-        console.log(error);
+        this.sendStatus(500);
       }
     },
   }
